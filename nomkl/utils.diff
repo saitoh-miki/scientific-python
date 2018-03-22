@@ -1,0 +1,14 @@
+--- old/utils.py        2016-05-19 01:47:24.000000000 +0900
++++ new/utils.py        2017-10-03 09:51:55.531971975 +0900
+@@ -235,7 +235,10 @@
+         if type(s) == bytes:
+             return s
+         else:
+-            r = s.encode('latin-1')
++            try:
++                r = s.encode('latin-1')
++            except:
++                r = s.encode('utf8')
+             if len(s) < 2:
+                 bc[s] = r
+             return r
